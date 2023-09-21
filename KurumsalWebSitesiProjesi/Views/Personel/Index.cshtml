@@ -1,0 +1,58 @@
+﻿@using EntityLayer.Concrete
+@model List<Personel> 
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int sira = 1;
+}
+
+<<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Personel Listesi</h3>
+
+            <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+
+
+                    <a href="/Personel/Add" class="btn btn-success btn-sm"><i class="fas fa-plus"></i>Ekle</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Personel Adı ve Soyadı</th>
+                        <th>Telefon</th>
+                        <th>Resim</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@sira</td>
+                            <td>@item.FullName</td>
+                            <td>@item.Telephone</td>
+                            <td><img class="" href="@item.ImageUrl" src="@item.ImageUrl" width="50"/></td>
+                            <td><a class="btn btn-danger btn-sm" href="/Personel/Delete/@item.PersonelID"><i class="fas fa-trash"></i>Sil</a></td>
+                            <td><a class="btn btn-warning btn-sm" href="/Personel/Edit/@item.PersonelID"><i class="fas fa-cog"></i>Düzenle</a></td>
+
+                        </tr>
+                        sira++;
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+

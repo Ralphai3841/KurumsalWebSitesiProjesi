@@ -1,0 +1,65 @@
+﻿@using EntityLayer.Concrete
+@model List<Contact>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>İletişim</h1>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+    <div class="container-fluid">
+
+
+        <div class="row">
+            <div class="col-md-12">
+                @foreach (var item in Model)
+                {
+                    <div class="timeline">
+
+                        <div class="time-label">
+                            <span class="bg-red">@item.MessageDate.ToShortDateString()</span>
+                        </div>
+
+                        <div>
+                            <i class="fas fa-envelope bg-blue"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fas fa-clock"></i>@item.MessageDate.ToShortTimeString()</span>
+                                <h3 class="timeline-header"><a href="#">@item.FirstName @item.LastName</a> - @item.Subject</h3>
+
+                                <div class="timeline-body">
+                                    @item.Message
+                                </div>
+                                <div class="timeline-footer">
+                                    <a href="mailto:@item.Email" class="btn btn-warning btn-sm">Mesajı Yanıtla</a>
+                                    <a href="/Contact/Detail/@item.ContactID" class="btn btn-primary btn-sm">Mesaj Detayı</a>
+                                    <a href="/Contact/Delete/@item.ContactID" class="btn btn-danger btn-sm">Mesajı Sil</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+    
+
+
+

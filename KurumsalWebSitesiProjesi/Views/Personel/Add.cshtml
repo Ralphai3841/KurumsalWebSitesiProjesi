@@ -1,0 +1,41 @@
+﻿@model EntityLayer.Concrete.Personel
+
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<h4>Personel Ekleme Sayfası</h4>
+<hr />
+
+    <div class="col-md-12">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label">Ad Soyad</label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telephone" class="control-label">Telefon</label>
+                <input asp-for="Telephone" class="form-control" />
+                <span asp-validation-for="Telephone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="control-label">Resim</label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="float-left">
+                    <a class="btn btn-secondary btn-sm" asp-action="Index">Geri Dön</a>
+                </div>
+                <div class="float-right">
+                    <input type="submit" value="Kaydet" class="btn btn-primary btn-sm" />
+                </div>
+
+            </div>
+        </form>
+    </div>

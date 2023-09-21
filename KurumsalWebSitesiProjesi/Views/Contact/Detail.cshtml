@@ -1,0 +1,69 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Contact>
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="col-md-12">
+    <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title">Mesaj Detayı</h3>
+
+
+        </div>
+        <!-- /.card-header -->
+        @foreach (var item in Model)
+        {
+
+            <div class="card-body p-0">
+                <div class="mailbox-read-info">
+                    <h5>@item.FirstName @item.LastName</h5>
+                    <h6>
+                        From: @item.Email
+                        <span class="mailbox-read-time float-right">@item.MessageDate.ToShortDateString() - @item.MessageDate.ToShortTimeString()</span>
+                    </h6>
+                </div>
+                <!-- /.mailbox-read-info -->
+                <div class="mailbox-controls with-border text-center">
+                    <div class="btn-group">
+                        <a href="/Contact/Delete/@item.ContactID" class="btn btn-default btn-sm" data-container="body">
+                            <i class="far fa-trash-alt"></i>Mesajı Sil
+                        </a>
+                        <a href="mailto:@item.Email" class="btn btn-warning btn-sm"> <i class="fas fa-reply"></i>Mesajı Yanıtla</a>
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="mailbox-read-message">
+                    <p>@item.Subject</p>
+
+                    <p>
+                        @item.Message
+
+                    </p>
+
+
+
+                    <p>Thanks,<br>Jane</p>
+                </div>
+                <!-- /.mailbox-read-message -->
+            </div>
+            <div class="card-footer">
+
+                <a href="/Contact/Delete/@item.ContactID" class="btn btn-default btn-sm" data-container="body">
+                    <i class="far fa-trash-alt"></i>Mesajı Sil
+                </a>
+                <a href="mailto:@item.Email" class="btn btn-warning btn-sm"> <i class="fas fa-reply"></i>Mesajı Yanıtla</a>
+
+            </div>
+        }
+
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
+</div>
